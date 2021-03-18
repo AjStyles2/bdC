@@ -8,11 +8,15 @@ char needChar(int num){
   char t[3];
   while(t[0] < 49 || t[0] > 55-num)
   {
- 	  fgets(t, 3, stdin);
- 	  if (t[0] < 49 || t[0] > 55-num) 
+  if (fgets(t, 3, stdin)) 
+    {
       {
-       printf("Неверное значение\n");
+        if (t[0] < 49 || t[0] > 55-num) 
+        {
+        printf("Неверное значение\n");
+        }
       }
+    }
   }
   return t[0];
 }
@@ -28,7 +32,7 @@ void main() {
   char inp[512];
   int check = 1;
   while (check) {
-    printf("Выберете действие:\n\n1. Добавить\n2. Удалить\n3. Изменить\n4. Вывод\n5. Загрузить\n6. Сохранить\n7. Выход\n\n");
+    printf("Выберете действие:\n\n1. Добавить\n2. Удалить\n3. Изменить\n4. Вывод\n5. Загрузить\n6. Сохранить\n7. Выходa\n\n");
     //printf("%d((((((sxsxsxsxxsxs\n", needChar());
     switch (needChar(0)) {
       /*Добавление элемента в БД*/
@@ -97,7 +101,8 @@ void main() {
       case '3': //Изменение
         printf("\nВведите номер записи: ");
         int x = 0;
-        scanf("%d", &x);
+        if (scanf("%d", &x) == 1 ) 
+        {
         getchar(); // Получить символ из стандартного потока ввода.
         printf("\nВведите название: ");
         fgets(string1, 512, stdin); //fgets чтение строки из указанного потока данных //stdin стандартный поток ввода
@@ -147,6 +152,7 @@ void main() {
         strcat(string1, string5);
         printf("\n%s\n\n", string1);
         strcpy(NodeByIndex(x, head)->data, string1);
+        }
         break;
       case '4': //Output
         {

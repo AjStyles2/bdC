@@ -17,7 +17,7 @@ void tearDown(/* arguments */) {
   /* code */
 }
 
-void main() {
+int main() {
   UNITY_BEGIN();
   RUN_TEST(testf);
   return UNITY_END();
